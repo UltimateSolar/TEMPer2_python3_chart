@@ -11,7 +11,7 @@ connect TEMPer2 USB thermometer to PC
 
 make the script TEMPer2.sh auto start and run as root on startup
 and it will read every Xsec the values of all TEMPer2 USB thermometers to file
-
+`
 su - root
 apt install python3
 apt-get install python3-serial
@@ -50,7 +50,7 @@ git checkout TEMPer2_V4.1
         "external temperature": 21.5
     }
 ]
-
+`
 (if not open an issue https://github.com/ccwienk/temper/issues
 as the company behind TEMPer2 might have changed firmware)
 
