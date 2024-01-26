@@ -1,19 +1,16 @@
+=== version: chart.py v1.2 ===
+creditz: OpenSource ÄÄÄÄT ultimate-solar DOOOOT com
 
-version: chart.py v1.2
-
-author: OpenSource ÄÄÄÄT ultimate-solar DOOOOT com
-
-What does it do?
+=== What does it do? ===
 
 plot a chart of TEMPer2 temperature data (1x internal temp sensor, 1x external (metal) temp sensor)
 
-How to install? + Requirements?
+=== How to install? + Requirements? ===
 
 connect TEMPer2 USB thermometer to PC
 
 make the script TEMPer2.sh auto start and run as root on startup
-and it will read every 60sec the values of all TEMPer2 USB thermometers to file
-(modify sleep 60; line in script, but too much data = chart looks ugly)
+and it will read every Xsec the values of all TEMPer2 USB thermometers to file
 
 su - root
 apt install python3
@@ -58,8 +55,17 @@ git checkout TEMPer2_V4.1
 as the company behind TEMPer2 might have changed firmware)
 
 # tool2: will use tool1 to get data  
-https://github.com/UltimateSolar/TEMPer2_python3_chart.git
+git clone https://github.com/UltimateSolar/TEMPer2_python3_chart.git
+
 mkdir /scripts
+
+# modify script
+vim ./TEMPer2_python3_chart/TEMPer2.sh
+
+# absolute path to temper.py tool1
+	/home/user/software/temper/temper.py --json|grep "temperature"|tee -a $LOGFILE;
+# interval between data taking (too much data = chart will look ugly)
+	sleep 60;
 
 cp -rv ./TEMPer2_python3_chart/TEMPer2.sh /scripts
 chmod +x /scripts/*.sh
@@ -82,9 +88,18 @@ vim chart.py
 # modify where the data will be
 pata_path = '/scripts/TEMPer2.data'
 
-Tested on:
+# as root run it and check it displays data
+/scripts/TEMPer2.sh
 
-hostnamectl; # debian and many other should work also
+# open 2nd terminal non-root
+/usr/bin/python3 /home/user/software/TEMPer2_python3_chart/chart.py
+
+# it should display a graph with 2x lines (Internal (inside the usb stick) and external temps)
+CONGRATS :)
+
+hostnamectl; # tested on, but also Debian, should work on almost any GNU Linux
 Operating System: Ubuntu 22.04.3 LTS              
           Kernel: Linux 5.15.0-91-generic
     Architecture: x86-64
+
+PS: may the src be with the user!
