@@ -1,6 +1,6 @@
 version: chart.py v1.2
 
-author: OpenSource@ultimate-solar.com
+author: OpenSource ÄÄÄT ultimate-solar DOOOOT com
 
 What does it do?
 
@@ -9,11 +9,15 @@ plot a chart of TEMPer2 temperature data (1x internal temp sensor, 1x external (
 Requirements?
 
 su - root
+
 apt install python3
+
 apt install python3-matplotlib
 
 git clone https://github.com/greg-kodama/temper.git
+
 cd temper/
+
 git checkout TEMPer2_V4.1
 
 How to install?
@@ -31,4 +35,5 @@ hostnamectl; # debian and many other should work also
 Operating System: Ubuntu 22.04.3 LTS              
           Kernel: Linux 5.15.0-91-generic
     Architecture: x86-64
+
 
